@@ -6,9 +6,9 @@
 #* Creative commons                                                        *
 #*-------------------------------------------------------------------------*
 import sys
-def factorial(num): 
+def factorial(num):     
     if num < 0: 
-        print("Factorial de un número negativo no existe")
+        print("Factorial de un numero negativo no existe")
 
     elif num == 0: 
         return 1
@@ -20,9 +20,17 @@ def factorial(num):
             num -= 1
         return fact 
 
-if len(sys.argv) == 0:
-   print("Debe informar un número!")
-   sys.exit()
-num=int(sys.argv[1])
-print("Factorial ",num,"! es ", factorial(num)) 
+
+while True:
+    if len(sys.argv) == 1:
+        try:
+            num = int(input("Por favor, ingrese un numero: "))
+            print("Factorial", num, "! es", factorial(num))
+            break
+        except ValueError:
+            print("¡Debe ingresar un numero entero!")
+    else:
+        num = int(sys.argv[1])
+        print("Factorial", num, "! es", factorial(num))
+        break
 
