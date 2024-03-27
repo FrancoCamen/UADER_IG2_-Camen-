@@ -1,5 +1,7 @@
 import sys
+
 def factorial(num):     
+    # Función para calcular el factorial de un número
     if num < 0: 
         print("Factorial de un número negativo no existe")
     elif num == 0: 
@@ -10,16 +12,22 @@ def factorial(num):
             fact *= num 
             num -= 1
         return fact 
+
 while True:
+    # Verificar si se proporciona un argumento en la línea de comandos
     if len(sys.argv) == 1:
         try:
+            # Solicitar al usuario que ingrese un rango
             rango = input("Por favor, ingrese un rango (desde-hasta) para calcular los factoriales: ")
+            # Caso -hasta
             if rango.startswith("-"):
                 desde = 1
                 hasta = int(rango.split("-")[1])
+            # Caso desde-
             elif rango.endswith("-"):
                 desde = int(rango.split("-")[0])
-                hasta = 15 #Se le define un limite fijo ya que no es necesario tanta iteracion
+                hasta = 60
+            # Caso desde-hasta
             elif "-" in rango:
                 desde, hasta = map(int, rango.split("-"))
             else:
@@ -28,13 +36,17 @@ while True:
         except ValueError:
             print("¡Debe ingresar un rango válido en el formato 'desde-hasta', '-hasta' o 'desde-'!")
     else:
+        # Si se proporciona un argumento en la línea de comandos, lo interpreta como un rango automáticamente
         rango = sys.argv[1]
+        # Caso -hasta
         if rango.startswith("-"):
             desde = 1
             hasta = int(rango.split("-")[1])
+        # Caso desde-
         elif rango.endswith("-"):
             desde = int(rango.split("-")[0])
             hasta = 60
+        # Caso desde-hasta
         elif "-" in rango:
             desde, hasta = map(int, rango.split("-"))
         break
